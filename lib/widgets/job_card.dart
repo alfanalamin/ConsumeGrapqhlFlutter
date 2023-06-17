@@ -45,7 +45,8 @@ class Jobcard extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(imageUrl,
+                  image: AssetImage(
+                    imageUrl,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -56,26 +57,28 @@ class Jobcard extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
+            const SizedBox(height: 8),
             Text(
               date,
               style: const TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 color: Colors.black,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
+            const SizedBox(height: 8),
             Text(
               description,
               style: const TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 color: Colors.black,
               ),
               maxLines: 2,

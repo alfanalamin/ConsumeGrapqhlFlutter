@@ -45,8 +45,9 @@ class _ContactsPageState extends State<ContactsPage> {
                 const Text(
                   'DIGIMAYA',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'inter',
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -58,15 +59,17 @@ class _ContactsPageState extends State<ContactsPage> {
                       const Text(
                         'Contact Us',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'inter',
                         ),
                       ),
                       const SizedBox(height: 20),
                       const Text(
                         'Nama:',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 14,
+                          fontFamily: 'inter',
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -90,7 +93,8 @@ class _ContactsPageState extends State<ContactsPage> {
                       const Text(
                         'Email:',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 14,
+                          fontFamily: 'inter',
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -114,7 +118,8 @@ class _ContactsPageState extends State<ContactsPage> {
                       const Text(
                         'Nomor WhatsApps:',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 14,
+                          fontFamily: 'inter',
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -146,7 +151,8 @@ class _ContactsPageState extends State<ContactsPage> {
                       const Text(
                         'Website:',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 14,
+                          fontFamily: 'inter',
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -228,19 +234,19 @@ class _ContactsPageState extends State<ContactsPage> {
                 children: [
                   Container(
                     height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 5,
                     color:
                         _selectedIndex == 0 ? Colors.black : Colors.transparent,
                   ),
                   Container(
                     height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 5,
                     color:
                         _selectedIndex == 1 ? Colors.black : Colors.transparent,
                   ),
                   Container(
                     height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 5,
                     color:
                         _selectedIndex == 2 ? Colors.black : Colors.transparent,
                   ),

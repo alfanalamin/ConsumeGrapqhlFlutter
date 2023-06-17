@@ -30,11 +30,12 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return  const Scaffold(
       body: Center(
-        child: Text(
+        child: Text(  
           'DIGIMAYA',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
+            fontFamily: 'inter',
           ),
         ),
       ),

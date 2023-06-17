@@ -48,9 +48,10 @@ class _HomePageState extends State<HomePage> {
                 const Text(
                   'DIGIMAYA',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
+                    fontFamily: 'inter',
                   ),
                 ),
                 const SizedBox(height: 20),

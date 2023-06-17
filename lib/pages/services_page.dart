@@ -48,6 +48,7 @@ class _ServicesPageState extends State<ServicesPage> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'inter',
                   ),
                 ),
                 SizedBox(height: 30),
@@ -61,6 +62,7 @@ class _ServicesPageState extends State<ServicesPage> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'inter',
                         ),
                       ),
                       SizedBox(height: 10),
@@ -72,6 +74,7 @@ class _ServicesPageState extends State<ServicesPage> {
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
+                          fontFamily: 'inter',
                         ),
                       ),
                       SizedBox(height: 20),
