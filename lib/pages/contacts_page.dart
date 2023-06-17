@@ -132,7 +132,13 @@ class _ContactsPageState extends State<ContactsPage> {
                             ),
                           ),
                             hintText: 'xxxxxxxxx',
-                            prefixIcon: Image.asset('assets/images/Country.png'),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 20, right: 10),
+                              child: Image.asset('assets/images/Country.png'),
+                            ),  
+                            prefixIconConstraints: const BoxConstraints(
+                              minWidth: 0,
+                              minHeight: 0), // Atur ukuran ikon di sini
                         ),
                       ),
                       const SizedBox(height: 20),
