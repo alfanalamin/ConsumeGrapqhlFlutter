@@ -138,7 +138,8 @@ class _ContactsPageState extends State<ContactsPage> {
                             ),  
                             prefixIconConstraints: const BoxConstraints(
                               minWidth: 0,
-                              minHeight: 0), // Atur ukuran ikon di sini
+                              minHeight: 0,
+                              ), // Atur ukuran ikon di sini
                         ),
                       ),
                       const SizedBox(height: 20),

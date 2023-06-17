@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) =>  HomePage(),
+          builder: (context) =>  const HomePage(),
         ),
       ),
     );
@@ -32,6 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           'DIGIMAYA',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
