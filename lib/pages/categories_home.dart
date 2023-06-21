@@ -35,7 +35,7 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back,
+                  icon: const Icon(Icons.arrow_back,
                   color: Colors.black,
                   ),
                 ),
@@ -44,7 +44,8 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.more_horiz,
+                  icon: const Icon(
+                    Icons.more_horiz,
                   color: Colors.black,
                   ),
                 ),
@@ -52,47 +53,62 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                 backgroundColor: Colors.transparent,
                 elevation: 0.0,
         ),
-        body: ListView(
-          padding: EdgeInsets.all(20),
-          children: [
-            Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: AssetImage(widget.imageUrl),
-                  fit: BoxFit.cover,
+        body: Container(
+          color: Color(0xFFF2F4F5),
+          child: ListView(  
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+            children: [
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: AssetImage(widget.imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                ),  
+              ),
+              const SizedBox(height: 18),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    Text(
+                      widget.title,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      widget.date,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      widget.description,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-             
-            ),
-            SizedBox(height: 20),
-            Text(
-              widget.title,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              widget.date,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.grey,
-              ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              widget.description,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.grey,
-              ),
-            ),
-            SizedBox(height: 20),
-          ],
+            ],
+          ),
         ),
         bottomNavigationBar: Stack(
           children: [
