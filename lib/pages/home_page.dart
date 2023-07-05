@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
 
                         'One of the main benefits of meditation is its ability to reduce stress. During meditation, individuals focus on their breath and let go of thoughts and distractions. This can help reduce the production of stress hormones like cortisol and adrenaline, leading to a feeling of relaxation and calmness.\n\n'
 
-                        'Additionally, meditation has been shown to improve emotional well-being. It can help reduce symptoms of anxiety and depression, and improve overall mood. This is because meditation can increase activity in the prefrontal cortex, which is associated with positive emotions.\n\n'
+                        'Additionally, meditation has been shown to imp rove emotional well-being. It can help reduce symptoms of anxiety and depression, and improve overall mood. This is because meditation can increase activity in the prefrontal cortex, which is associated with positive emotions.\n\n'
 
                         'Meditation can also improve cognitive function. It can increase attention span, memory, and mental clarity, which can improve overall productivity and performance. Additionally, meditation can improve sleep quality, which is essential for good mental health.'
                       ),

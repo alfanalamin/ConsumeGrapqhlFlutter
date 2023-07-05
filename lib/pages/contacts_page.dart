@@ -45,9 +45,9 @@ class _ContactsPageState extends State<ContactsPage> {
                 const Text(
                   'DIGIMAYA',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'inter',
                   ),
                 ),
                 const SizedBox(height: 30),
