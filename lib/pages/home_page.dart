@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/services_page.dart';
+import 'package:flutter_application_1/theme.dart';
 import '../widgets/job_card.dart';
 import 'contacts_page.dart';
 
@@ -38,49 +39,45 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: ListView(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'DIGIMAYA',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontFamily: 'inter',
+  return SafeArea(
+    child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'DIGIMAYA',
+             style: AppText.titleTextStyle,
+        ),
+      ),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: AppColor.neutral500.value,
+                    width: 0.1,
                   ),
                 ),
-                const SizedBox(height: 20),
-                // TextField
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 0.1,
-                    ),
-                    
-                  ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,                    
-                      hintText: 'Search articles...',
-                      suffixIcon: Icon(Icons.search,
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                    hintText: 'Search articles...',
+                    suffixIcon: Icon(
+                      Icons.search,
                       color: Colors.black,
-                      ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
-                // Image
-                // ignore: avoid_unnecessary_containers
+              ),
+              // Add your additional widgets here
+            const SizedBox(height: 12),
                 Container(
                   child: const Column(   
                     children: [
@@ -90,11 +87,8 @@ class _HomePageState extends State<HomePage> {
                         date: '6 Mar, 2023',
                         description:
                         'Meditation is a practice that has been used for centuries to promote relaxation and reduce stress. In recent years, meditation has gained popularity as a tool for improving mental health and well-being. Research has shown that meditation can be an effective way to reduce stress and improve overall quality of life.\n\n'
-
                         'One of the main benefits of meditation is its ability to reduce stress. During meditation, individuals focus on their breath and let go of thoughts and distractions. This can help reduce the production of stress hormones like cortisol and adrenaline, leading to a feeling of relaxation and calmness.\n\n'
-
                         'Additionally, meditation has been shown to imp rove emotional well-being. It can help reduce symptoms of anxiety and depression, and improve overall mood. This is because meditation can increase activity in the prefrontal cortex, which is associated with positive emotions.\n\n'
-
                         'Meditation can also improve cognitive function. It can increase attention span, memory, and mental clarity, which can improve overall productivity and performance. Additionally, meditation can improve sleep quality, which is essential for good mental health.'
                       ),
                       SizedBox(height: 20),
@@ -108,10 +102,10 @@ class _HomePageState extends State<HomePage> {
                             's something exhilarating about leaving your everyday life behind and venturing into the unknown.\n\n'
                             'However, traveling can also be challenging. From navigating unfamiliar cities to dealing with language barriers and cultural differences, it can sometimes feel like a daunting task. But with a little preparation and a willingness to be flexible and adaptable, you can make the most of your travels and create unforgettable memories.\n\n'
                             'Here are some tips to help you make the most of your travels;\n\n'
-                            'Research your destination\n\n'
+                            'Research your destination\n'
                             'Before you go, do some research on your destination. Read travel guides, look up reviews of hotels and restaurants, and learn about the local customs and culture. This will help you avoid any surprises and give you a better understanding of the place you’re visiting.\n\n'
                             'Pack smart\n'
-                            'Pack light and bring only what you need. This will make it easier to move around and reduce the risk of lost or stolen luggage. Don’t forget to bring essentials like a passport, travel documents, and any necessary medications.\n\n'
+                            'Pack light and bring only     what you need. This will make it easier to move around and reduce the risk of lost or stolen luggage. Don’t forget to bring essentials like a passport, travel documents, and any necessary medications.\n\n'
                             'Stay flexible\n'
                             'Travel plans can change unexpectedly, so be prepared to be flexible. Don’t over-schedule your trip, and be willing to change your itinerary if necessary. This will allow you to take advantage of unexpected opportunities and enjoy your travels more.\n\n'
                             'Embrace the local culture\n'
@@ -140,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          ],
+          ),
         ),
         bottomNavigationBar: Stack(
           children: [
@@ -150,7 +144,7 @@ class _HomePageState extends State<HomePage> {
               selectedItemColor: Colors.black,
               items: const [
                 BottomNavigationBarItem(
-                  //icon di ganti sama gmabar dari assets
+                  //icon di ganti sama gambar dari assets
                   icon: ImageIcon(
                     AssetImage('assets/images/home-2.png'),
                   ),
@@ -204,4 +198,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

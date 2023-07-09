@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/theme.dart';
 
 import '../pages/categories_home.dart';
 
@@ -32,9 +33,8 @@ class Jobcard extends StatelessWidget {
         );
       },
       child: Container(
-        // height: 310,
         width: double.infinity,
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           
@@ -57,31 +57,21 @@ class Jobcard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
+              style: AppText.regularTextStyle,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
             Text(
               date,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-              ),
+              style: AppText.xsmallTextStyle,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
             Text(
               description,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-              ),
+              style: AppText.smallTextStyle,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

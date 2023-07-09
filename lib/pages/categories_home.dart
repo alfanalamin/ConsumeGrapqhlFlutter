@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/theme.dart';
 
 
 class CategoriesHome extends StatefulWidget {
@@ -86,26 +87,18 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                         const SizedBox(height: 20),
                         Text(
                           widget.title,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: AppText.titleTextStyle,
+
                         ),
                         const SizedBox(height: 10),
                         Text(
                           widget.date,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey,
-                          ),
+                          style: AppText.xsmallTextStyle
                         ),
                         const SizedBox(height: 20),
                         Text(
                           widget.description,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey,
-                          ),
+                          style: AppText.smallTextStyle,
                         ),
                       ],
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/theme.dart';
 
 import 'home_page.dart';
 import 'services_page.dart';
@@ -37,40 +38,33 @@ class _ContactsPageState extends State<ContactsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            'DIGIMAYA',
+            style: AppText.titleTextStyle
+          ),
+        ),
         body: ListView(
           children:  [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  'DIGIMAYA',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'inter',
-                  ),
-                ),
                 const SizedBox(height: 30),
                 Padding(
                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Contact Us',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'inter',
-                        ),
+                        style: AppText.titleTextStyle,
                       ),
                       const SizedBox(height: 20),
-                      const Text(
+                      Text(
                         'Nama:',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'inter',
-                        ),
+                        style: AppText.smallTextStyle
                       ),
                       const SizedBox(height: 10),
                       TextField(
@@ -90,12 +84,9 @@ class _ContactsPageState extends State<ContactsPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
+                      Text(
                         'Email:',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'inter',
-                        ),
+                        style: AppText.smallTextStyle
                       ),
                       const SizedBox(height: 10),
                       TextField(
@@ -112,15 +103,13 @@ class _ContactsPageState extends State<ContactsPage> {
                             ),
                           ),
                           hintText: 'email@domain.com',
+                          
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
+                      Text(
                         'Nomor WhatsApps:',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'inter',
-                        ),
+                        style: AppText.smallTextStyle
                       ),
                       const SizedBox(height: 10),
                       TextField(  
@@ -148,12 +137,9 @@ class _ContactsPageState extends State<ContactsPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
+                      Text(
                         'Website:',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'inter',
-                        ),
+                        style: AppText.smallTextStyle
                       ),
                       const SizedBox(height: 10),
                       TextField(

@@ -1,266 +1,166 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+// Colors
+class AppColor {
+  final Color value;
 
+  AppColor(this.value);
 
+  static AppColor fromHex(String hexColor) {
+    return AppColor(HexColor(hexColor));
+  }
 
-class AppColors {
-  //neutral
-  static Color neutral900 = HexColor('#0F172A');
-  static Color neutral800 = HexColor('#1E293B');
-  static Color neutral700 = HexColor('#334155');
-  static Color neutral600 = HexColor('#475569');
-  static Color neutral500 = HexColor('#66748B');
-  static Color neutral400 = HexColor('#94A3B8');
-  static Color neutral300 = HexColor('#CBD5E1');
-  static Color neutral200 = HexColor('#E3E8F0');
-  static Color neutral100 = HexColor('#F1F5F9');
-  static Color neutral50 = HexColor('#ECFFFD');
-  static Color neutralWhite = HexColor('#FFFFFF');
-  static Color neutralBlack = HexColor('#000000');
+  // neutral
+  static AppColor neutral900 = AppColor.fromHex('#0F172A');
+  static AppColor neutral800 = AppColor.fromHex('#1E293B');
+  static AppColor neutral700 = AppColor.fromHex('#334155');
+  static AppColor neutral600 = AppColor.fromHex('#475569');
+  static AppColor neutral500 = AppColor.fromHex('#66748B');
+  static AppColor neutral400 = AppColor.fromHex('#94A3B8');
+  static AppColor neutral300 = AppColor.fromHex('#CBD5E1');
+  static AppColor neutral200 = AppColor.fromHex('#E3E8F0');
+  static AppColor neutral100 = AppColor.fromHex('#F1F5F9');
+  static AppColor neutral50 = AppColor.fromHex('#FFFFFF');
+  static AppColor neutralBlack = AppColor.fromHex('#000000');
 
-  //primary
-  static Color primary900 = HexColor('#2C5E0C');
-  static Color primary800 = HexColor('#3D7D14');
-  static Color primary700 = HexColor('#548D1F');  
-  static Color primary600 = HexColor('#6EA92E');
-  static Color primary500 = HexColor('#8BC53F');
-  static Color primary400 = HexColor('#B0DC6B');
-  static Color primary300 = HexColor('#CCED8C');
-  static Color primary200 = HexColor('#E4F9B5');
-  static Color primary100 = HexColor('#F3FCD9');
-  static Color primary50 = HexColor('#FBFFF0');
+  // primary
+  static AppColor primary900 = AppColor.fromHex('#2C5E0C');
+  static AppColor primary800 = AppColor.fromHex('#3D7D14');
+  static AppColor primary700 = AppColor.fromHex('#548D1F');
+  static AppColor primary600 = AppColor.fromHex('#6EA92E');
+  static AppColor primary500 = AppColor.fromHex('#8FCA3A');
+  static AppColor primary400 = AppColor.fromHex('#8BC53F');
+  static AppColor primary300 = AppColor.fromHex('#CCED8C');
+  static AppColor primary200 = AppColor.fromHex('#E4F9B5');
+  static AppColor primary100 = AppColor.fromHex('#F3FCD9');
+  static AppColor primary50 = AppColor.fromHex('#FBFFF0');
 
-  //secondary
-  static Color secondary900 = HexColor('#2C5E0C');
-  static Color secondary800 = HexColor('#3D7214');
-  static Color secondary700 = HexColor('#548D1F');
-  static Color secondary600 = HexColor('#6EA92E');
-  static Color secondary500 = HexColor('#8BC53F');
-  static Color secondary400 = HexColor('#B0DC6B');
-  static Color secondary300 = HexColor('#CCED8C');
-  static Color secondary200 = HexColor('#E4F9B5');
-  static Color secondary100 = HexColor('#F3FCD9');
-  static Color secondary50 = HexColor('#FBFFF0');
+  // secondary
+  static AppColor secondary900 = AppColor.fromHex('#2C5E0C');
+  static AppColor secondary800 = AppColor.fromHex('#3D7214');
+  static AppColor secondary700 = AppColor.fromHex('#548D1F');
+  static AppColor secondary600 = AppColor.fromHex('#6EA92E');
+  static AppColor secondary500 = AppColor.fromHex('#8BC53F');
+  static AppColor secondary400 = AppColor.fromHex('#B0DC6B');
+  static AppColor secondary300 = AppColor.fromHex('#CCED8C');
+  static AppColor secondary200 = AppColor.fromHex('#E4F9B5');
+  static AppColor secondary100 = AppColor.fromHex('#F3FCD9');
+  static AppColor secondary50 = AppColor.fromHex('#FBFFF0');
 
-  //tertiary
-  static Color tertiary900 = HexColor('#831843');
-  static Color tertiary800 = HexColor('#9d174d');
-  static Color tertiary700 = HexColor('#be185d');
-  static Color tertiary600 = HexColor('#db2777');
-  static Color tertiary500 = HexColor('#ec4899');
-  static Color tertiary400 = HexColor('#f472b6');
-  static Color tertiary300 = HexColor('#f9a8d4');
-  static Color tertiary200 = HexColor('#fbcfe8');
-  static Color tertiary100 = HexColor('#fce7f3');
-  static Color tertiary50 = HexColor('#fdf2f8');
+  // tertiary
+  static AppColor tertiary900 = AppColor.fromHex('#831843');
+  static AppColor tertiary800 = AppColor.fromHex('#9d174d');
+  static AppColor tertiary700 = AppColor.fromHex('#be185d');
+  static AppColor tertiary600 = AppColor.fromHex('#db2777');
+  static AppColor tertiary500 = AppColor.fromHex('#ec4899');
+  static AppColor tertiary400 = AppColor.fromHex('#f472b6');
+  static AppColor tertiary300 = AppColor.fromHex('#f9a8d4');
+  static AppColor tertiary200 = AppColor.fromHex('#fbcfe8');
+  static AppColor tertiary100 = AppColor.fromHex('#fce7f3');
+  static AppColor tertiary50 = AppColor.fromHex('#fdf2f8');
 
-  //danger
-  static Color danger900 = HexColor('#581C87');
-  static Color danger800 = HexColor('#6B21A8');
-  static Color danger700 = HexColor('#7E22CE');
-  static Color danger600 = HexColor('#9333EA');
-  static Color danger500 = HexColor('#A855F7');
-  static Color danger400 = HexColor('#C084FC');
-  static Color danger300 = HexColor('#D8B4FE');
-  static Color danger200 = HexColor('#E9D5FF');
-  static Color danger100 = HexColor('#F3E8FF');
-  static Color danger50 = HexColor('#FAF5FF');
+  // danger
+  static AppColor danger900 = AppColor.fromHex('#581C87');
+  static AppColor danger800 = AppColor.fromHex('#6B21A8');
+  static AppColor danger700 = AppColor.fromHex('#7E22CE');
+  static AppColor danger600 = AppColor.fromHex('#9333EA');
+  static AppColor danger500 = AppColor.fromHex('#A855F7');
+  static AppColor danger400 = AppColor.fromHex('#C084FC');
+  static AppColor danger300 = AppColor.fromHex('#D8B4FE');
+  static AppColor danger200 = AppColor.fromHex('#E9D5FF');
+  static AppColor danger100 = AppColor.fromHex('#F3E8FF');
+  static AppColor danger50 = AppColor.fromHex('#FAF5FF');
 
   //warning
-  static Color warning900 = HexColor('#581C87');
-  static Color warning800 = HexColor('#6B21A8');
-  static Color warning700 = HexColor('#7E22CE');
-  static Color warning600 = HexColor('#9333EA');
-  static Color warning500 = HexColor('#A855F7');
-  static Color warning400 = HexColor('#C084FC');
-  static Color warning300 = HexColor('#D8B4FE');
-  static Color warning200 = HexColor('#E9D5FF');
-  static Color warning100 = HexColor('#F3E8FF');
-  static Color warning50 = HexColor('#FAF5FF');
+  static AppColor warning900 = AppColor.fromHex('#581C87');
+  static AppColor warning800 = AppColor.fromHex('#6B21A8');
+  static AppColor warning700 = AppColor.fromHex('#7E22CE');
+  static AppColor warning600 = AppColor.fromHex('#9333EA');
+  static AppColor warning500 = AppColor.fromHex('#A855F7');
+  static AppColor warning400 = AppColor.fromHex('#C084FC');
+  static AppColor warning300 = AppColor.fromHex('#D8B4FE');
+  static AppColor warning200 = AppColor.fromHex('#E9D5FF');
+  static AppColor warning100 = AppColor.fromHex('#F3E8FF');
+  static AppColor warning50 = AppColor.fromHex('#FAF5FF');
 
-  //orange
-  static Color orange900 = HexColor('#7C2D12');
-  static Color orange800 = HexColor('#9A3412');
-  static Color orange700 = HexColor('#C2410C');
-  static Color orange600 = HexColor('#EA580C');
-  static Color orange500 = HexColor('#F97316');
-  static Color orange400 = HexColor('#FB923C');
-  static Color orange300 = HexColor('#FDBA74');
-  static Color orange200 = HexColor('#FED7AA');
-  static Color orange100 = HexColor('#FFEDD5');
-  static Color orange50 = HexColor('#FFF7ED');
+  // orange
+  static AppColor orange900 = AppColor.fromHex('#7C2D12');
+  static AppColor orange800 = AppColor.fromHex('#9A3412');
+  static AppColor orange700 = AppColor.fromHex('#C2410C');
+  static AppColor orange600 = AppColor.fromHex('#EA580C');
+  static AppColor orange500 = AppColor.fromHex('#F97316');
+  static AppColor orange400 = AppColor.fromHex('#FB923C');
+  static AppColor orange300 = AppColor.fromHex('#FDBA74');
+  static AppColor orange200 = AppColor.fromHex('#FED7AA');
+  static AppColor orange100 = AppColor.fromHex('#FFEDD5');
+  static AppColor orange50 = AppColor.fromHex('#FFF7ED');
 
-  //info
-  static Color info900 = HexColor('#0C4A6E');
-  static Color info800 = HexColor('#075985');
-  static Color info700 = HexColor('#0369a1');
-  static Color info600 = HexColor('#0284C7');
-  static Color info500 = HexColor('#0EA5E9');
-  static Color info400 = HexColor('#38BDF8');
-  static Color info300 = HexColor('#7DD3FC');
-  static Color info200 = HexColor('#BAE6FD');
-  static Color info100 = HexColor('#E0F2FE');
-  static Color info50 = HexColor('#F0F9FF');
+  // info
+  static AppColor info900 = AppColor.fromHex('#0C4A6E');
+  static AppColor info800 = AppColor.fromHex('#075985');
+  static AppColor info700 = AppColor.fromHex('#0369a1');
+  static AppColor info600 = AppColor.fromHex('#0284c7');
+  static AppColor info500 = AppColor.fromHex('#0EA5E9');
+  static AppColor info400 = AppColor.fromHex('#38BDF8');
+  static AppColor info300 = AppColor.fromHex('#7DD3FC');
+  static AppColor info200 = AppColor.fromHex('#BAE6FD');
+  static AppColor info100 = AppColor.fromHex('#E0F2FE');
+  static AppColor info50 = AppColor.fromHex('#F0F9FF');
 
-  //success
-  static Color success900 = HexColor('#14532D');
-  static Color success800 = HexColor('#166534');
-  static Color success700 = HexColor('#15803D');
-  static Color success600 = HexColor('#16A34A');
-  static Color success500 = HexColor('#22C55E');
-  static Color success400 = HexColor('#4ADE80');
-  static Color success300 = HexColor('#86EFAC');
-  static Color success200 = HexColor('#BBF7D0');
-  static Color success100 = HexColor('#DCFCE7');
-  static Color success50 = HexColor('#F0FDF4');
+  // success
+  static AppColor success900 = AppColor.fromHex('#14532D');
+  static AppColor success800 = AppColor.fromHex('#166534');
+  static AppColor success700 = AppColor.fromHex('#15803D');
+  static AppColor success600 = AppColor.fromHex('#16A34A');
+  static AppColor success500 = AppColor.fromHex('#22C55E');
+  static AppColor success400 = AppColor.fromHex('#4ADE80');
+  static AppColor success300 = AppColor.fromHex('#86EFAC');
+  static AppColor success200 = AppColor.fromHex('#BBF7D0');
+  static AppColor success100 = AppColor.fromHex('#DCFCE7');
+  static AppColor success50 = AppColor.fromHex('#F0FDF4');
 }
 
-class Typography {
-  static TextStyle title1 = GoogleFonts.inter(
-    fontSize: 48,
-    height: 56,
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle title2 = GoogleFonts.inter(
-    fontSize: 32,
-    height: 36,
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle title3 = GoogleFonts.inter(
+class AppText {
+  static TextStyle titleTextStyle = TextStyle(
+    color: AppColor.neutral900.value,
     fontSize: 24,
-    height: 28,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
+    fontFamily: 'inter',
   );
-
-  static TextStyle large = GoogleFonts.inter(
+  static const TextStyle largeTextStyle = TextStyle(
     fontSize: 18,
-    height: 20,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );  
-
-  static TextStyle large1 = GoogleFonts.inter(
-    fontSize: 18,
-    height: 20,
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );  
-
-  static TextStyle large2 = GoogleFonts.inter(
-    fontSize: 18,
-    height: 20,
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );  
-
-  static TextStyle regular = GoogleFonts.inter(
+    fontFamily: 'inter',
+  );
+  static TextStyle regularTextStyle = TextStyle(
+    color: AppColor.neutral600.value,
     fontSize: 16,
-    height: 16,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
+    fontFamily: 'inter',
   );
-
-  static TextStyle regular1 = GoogleFonts.inter(
-    fontSize: 16,
-    height: 16,
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle regular2 = GoogleFonts.inter(
-    fontSize: 16,
-    height: 16,
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle small = GoogleFonts.inter(
+  static  TextStyle smallTextStyle = TextStyle(
     fontSize: 14,
-    height: 14,
+    color: AppColor.neutral500.value,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
+    fontFamily: 'inter',
   );
-
-  static TextStyle small1 = GoogleFonts.inter(
-    fontSize: 14,
-    height: 14,
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle small2 = GoogleFonts.inter(
-    fontSize: 14,
-    height: 14,
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-  
-  static TextStyle xsmall = GoogleFonts.inter(
+  static  TextStyle xsmallTextStyle = TextStyle(
     fontSize: 12,
-    height: 12,
+    color: AppColor.neutral600.value,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
+    fontFamily: 'inter',
   );
-
-  static TextStyle xsmall1 = GoogleFonts.inter(
-    fontSize: 12,
-    height: 12,
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle xsmall2 = GoogleFonts.inter(
-    fontSize: 12,
-    height: 12,
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
-  static TextStyle tiny = GoogleFonts.inter(
+  static  TextStyle tinyTextStyle = TextStyle(
     fontSize: 10,
-    height: 10,
+    color: AppColor.neutral400.value,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
+    fontFamily: 'inter',
   );
-  
-  static TextStyle tiny1 = GoogleFonts.inter(
-    fontSize: 10,
-    height: 10,
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-  
-  static TextStyle tiny2 = GoogleFonts.inter(
-    fontSize: 10,
-    height: 10,
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    color: AppColors.neutral900,
-  );
-
 }
- 
