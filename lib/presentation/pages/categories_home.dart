@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/theme.dart';
 
-
 class CategoriesHome extends StatefulWidget {
-  final String imageUrl;
-  final String title;
-  final String date;
-  final String description;
+  // final String imageUrl;
+  // final String title;
+  // final String date;
+  // final String description;
 
-  CategoriesHome({
-    required this.imageUrl,
-    required this.title,
-    required this.date,
-    required this.description,
-  });
+  // CategoriesHome({
+  //   required this.imageUrl,
+  //   required this.title,
+  //   required this.date,
+  //   required this.description,
+  // });
 
+  // ignore: prefer_typing_uninitialized_variables
+  final post;
+
+  CategoriesHome({super.key, required this.post});
   @override
   State<CategoriesHome> createState() => _CategoriesHomeState();
 }
 
 class _CategoriesHomeState extends State<CategoriesHome> {
-    int _selectedIndex = 0;
+  int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -28,34 +31,35 @@ class _CategoriesHomeState extends State<CategoriesHome> {
   }
 
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back,
-                  color: Colors.black,
-                  ),
-                ),
-                actions : [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.more_horiz,
-                  color: Colors.black,
-                  ),
-                ),
-                ],
-                backgroundColor: Colors.transparent,
-                elevation: 0.0,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.more_horiz,
+                color: Colors.black,
+              ),
+            ),
+          ],
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
         ),
         body: Container(
-          color: Color(0xFFF2F4F5),
+          color: const Color(0xFFF2F4F5),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
@@ -66,8 +70,8 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                     height: 200,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(
-                          widget.imageUrl,
+                        image: NetworkImage(
+                          (widget.post.thumbnailSrc?.md ?? ''),
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -78,31 +82,20 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                        // color: Colors.white,
+                        // borderRadius: BorderRadius.circular(20),
+                        ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 20),
                         Text(
-                          widget.title,
-                          style: AppText.titleTextStyle,
-
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          widget.date,
-                          style: AppText.xsmallTextStyle
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          widget.description,
+                          (widget.post.title ?? ''),
                           style: AppText.smallTextStyle,
                         ),
                       ],
                     ),
-                  ),      
+                  ),
                 ],
               ),
             ),
