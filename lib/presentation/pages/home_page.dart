@@ -6,7 +6,7 @@ import 'contacts_page.dart';
 
 class HomePage extends StatefulWidget {
   // ignore: use_key_in_widget_constructors
-  const HomePage({Key? key});
+ const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -79,13 +79,10 @@ class _HomePageState extends State<HomePage> {
               ),
               // Add your additional widgets here
             const SizedBox(height: 12),
-                Container(
-                  child: const Column(   
-                    children: [
-                      Jobcard(
-                      ),
-                    ],
-                  ),
+                const Column(  
+                  children: [
+                    Jobcard()
+                  ], 
                 ),
               ],
             ),
