@@ -233,12 +233,10 @@ const documentNodeQueryblogPosts = DocumentNode(definitions: [
   ),
 ]);
 
-Query$blogPosts _parserFn$Query$blogPosts(
-  Map<String, dynamic> data) =>
+Query$blogPosts _parserFn$Query$blogPosts(Map<String, dynamic> data) =>
     Query$blogPosts.fromJson(data);
-  
-class Options$Query$blogPosts 
-  extends graphql.QueryOptions<Query$blogPosts> {
+
+class Options$Query$blogPosts extends graphql.QueryOptions<Query$blogPosts> {
   Options$Query$blogPosts({
     String? operationName,
     graphql.FetchPolicy? fetchPolicy,
@@ -343,11 +341,13 @@ class Query$blogPosts$Widget extends graphql_flutter.Query<Query$blogPosts> {
         );
 }
 
+
+
 class Query$blogPosts$blogPosts {
   Query$blogPosts$blogPosts({
     required this.items,
     this.$__typename = 'BlogPostResSchema',
-  });
+});
 
   factory Query$blogPosts$blogPosts.fromJson(Map<String, dynamic> json) {
     final l$items = json['items'];
