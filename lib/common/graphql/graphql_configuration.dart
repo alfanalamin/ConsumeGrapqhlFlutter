@@ -4,7 +4,7 @@ import 'package:flutter_application_1/common/configs.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-  class GraphQLConfiguration {
+class GraphQLConfiguration {
     GraphQLConfiguration();
     
     Future<GraphQLClient> getClient(String flavor) async {
