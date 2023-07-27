@@ -6,14 +6,13 @@ import 'contacts_page.dart';
 
 class HomePage extends StatefulWidget {
   // ignore: use_key_in_widget_constructors
- const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -40,49 +39,47 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-  return SafeArea(
-    child: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'DIGIMAYA',
-             style: AppText.titleTextStyle,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            'DIGIMAYA',
+            style: AppText.titleTextStyle,
+          ),
         ),
-      ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppColor.neutral500.value,
-                    width: 0.1,
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: AppColor.neutral500.value,
+                      width: 0.1,
+                    ),
                   ),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
+                  child: const TextField(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
-                    hintText: 'Search articles...',
-                    suffixIcon: Icon(
-                      Icons.search,
-                      color: Colors.black,
+                      hintText: 'Search articles...',
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              // Add your additional widgets here
-            const SizedBox(height: 12),
-                const Column(  
-                  children: [
-                    Jobcard()
-                  ], 
+                // Add your additional widgets here
+                const SizedBox(height: 12),
+                const Column(
+                  children: [Jobcard()],
                 ),
               ],
             ),
