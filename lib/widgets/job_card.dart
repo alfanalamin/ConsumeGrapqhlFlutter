@@ -27,18 +27,23 @@ void initState() {
                 .postsData
                 ?.items
                 .forEach((element) {
-                  // print(element.title);
-                  // print(element.thumbnailSrc?.md);
+                // print(element.title);
+                // print(element.thumbnailSrc?.md);
             });
           }),
       );
     });
   }
 
-void _onRefresh() async {
-    // Your refresh logic
-}
-void _onLoading() async {
+  void _onRefresh() async {
+    await Future.delayed(const Duration(milliseconds: 1000));
+    if (mounted) {
+      setState(() {
+        _refreshController.refreshCompleted();
+      });
+    }
+  }
+  void _onLoading() async {
     await Future.delayed(const Duration(milliseconds: 1000));
     if (mounted) {
       setState(() {
@@ -47,8 +52,8 @@ void _onLoading() async {
     }
   }
 
-@override
-Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return Consumer<BlogPostProvider>(
       builder: (context, provider, _) {
         switch (provider.postState) {
