@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/state_enum.dart';
 import 'package:flutter_application_1/presentation/pages/categories_home.dart';
@@ -6,9 +8,11 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Jobcard extends StatefulWidget {
-  const Jobcard({Key? key}) : super(key: key);
+  final String searchQuery;
 
-@override
+  const Jobcard({Key? key, required this.searchQuery}) : super(key: key);
+
+  @override
   _JobcardState createState() => _JobcardState();
 }
 
@@ -16,22 +20,20 @@ class _JobcardState extends State<Jobcard> {
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
-void initState() {
+  @override
+  void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.microtask(
-        () => Provider.of<BlogPostProvider>(context, listen: false)
-          ..doGetPost().then((value) {
-            context
-                .read<BlogPostProvider>()
-                .postsData
-                ?.items
-                .forEach((element) {
-                // print(element.title);
-                // print(element.thumbnailSrc?.md);
-            });
-          }),
-      );
+      Future.microtask(() {
+        Provider.of<BlogPostProvider>(context, listen: false)
+            .doGetPost()
+            .then((value) {
+          context.read<BlogPostProvider>().postsData?.items.forEach((element) {
+            // print(element.title);
+            // print(element.thumbnailSrc?.md);
+          });
+        });
+      });
     });
   }
 
@@ -43,6 +45,7 @@ void initState() {
       });
     }
   }
+
   void _onLoading() async {
     await Future.delayed(const Duration(milliseconds: 1000));
     if (mounted) {
@@ -56,6 +59,14 @@ void initState() {
   Widget build(BuildContext context) {
     return Consumer<BlogPostProvider>(
       builder: (context, provider, _) {
+        final filteredData = widget.searchQuery.isEmpty
+            ? provider.postsData?.items
+            : provider.postsData?.items
+                .where((element) => element.title!
+                    .toLowerCase()
+                    .contains(widget.searchQuery.toLowerCase()))
+                .toList();
+
         switch (provider.postState) {
           case RequestState.Empty:
             return const Center(
@@ -67,17 +78,16 @@ void initState() {
             );
           case RequestState.Loaded:
             if (provider.postsData != null) {
-              // Display the fetched data using ListView.builder
               return SizedBox(
-                height: MediaQuery.of(context).size.height -150, // Set a fixed height
+                height: MediaQuery.of(context).size.height - 150,
                 child: SmartRefresher(
                   controller: _refreshController,
                   onRefresh: _onRefresh,
                   onLoading: _onLoading,
                   child: ListView.builder(
-                    itemCount: provider.postsData!.items.length,
+                    itemCount: filteredData?.length ?? 0,
                     itemBuilder: (context, index) {
-                      final post = provider.postsData!.items[index];
+                      final post = filteredData![index];
                       return InkWell(
                         onTap: () {
                           Navigator.push(
