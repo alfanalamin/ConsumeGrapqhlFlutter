@@ -5,7 +5,6 @@ import '../../widgets/job_card.dart';
 import 'contacts_page.dart';
 
 class HomePage extends StatefulWidget {
-  // ignore: use_key_in_widget_constructors
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -14,10 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  TextEditingController _searchController = TextEditingController();
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-    });
+    }); 
 
     if (index == 0) {
       Navigator.push(
@@ -65,26 +66,43 @@ class _HomePageState extends State<HomePage> {
                       width: 0.1,
                     ),
                   ),
-                  child: const TextField(
+                  child: TextField(
+                    controller: _searchController,
+                    onChanged: (query) {
+                      setState(() {});
+                    },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Search articles...',
-                      suffixIcon: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      ),
+                      suffixIcon: _searchController.text.isNotEmpty
+                          ? IconButton(
+                              icon: const Icon(
+                                Icons.close,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _searchController.clear();
+                                });
+                              },
+                            )
+                          : const Icon(
+                              Icons.search,
+                              color: Colors.black,
+                            ),
                     ),
                   ),
                 ),
-                // Add your additional widgets here
                 const SizedBox(height: 12),
-                const Column(
-                  children: [Jobcard()],
+                Column(
+                  children: [
+                    Jobcard(searchQuery: _searchController.text),
+                  ],
                 ),
               ],
             ),
           ),
-        ),
+        ),  
         bottomNavigationBar: Stack(
           children: [
             BottomNavigationBar(
@@ -93,7 +111,6 @@ class _HomePageState extends State<HomePage> {
               selectedItemColor: Colors.black,
               items: const [
                 BottomNavigationBarItem(
-                  //icon di ganti sama gambar dari assets
                   icon: ImageIcon(
                     AssetImage('assets/images/home-2.png'),
                   ),
