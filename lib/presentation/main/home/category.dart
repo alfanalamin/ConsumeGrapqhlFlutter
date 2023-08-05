@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/theme.dart';
 
+// ignore: must_be_immutable
 class Category extends StatelessWidget {
-  int index;
-  String caption;
+  int? index;
+  String? caption;
   bool isSelected;
   Icon? icon;
-  Function(int)? onTap;
-
-  Category({
-    Key? key,
-    required this.index,
-    required this.caption,
-    this.icon,
+  Function? onTap;
+  Category( 
+      {Key? key,
+      this.index,
+      this.caption,
+      this.icon,
     this.isSelected = false,
-    this.onTap,
-  }) : super(key: key);
-
+      this.onTap})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        if (onTap != null) {
-          onTap!(index);
-        }
+      onTap: (  ) {
+        onTap!(index);
       },
       child: Container(
         height: 30,
@@ -32,25 +29,28 @@ class Category extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: isSelected ? Colors.white : Colors.black,
+            color: isSelected ? Colors.grey : Colors.black,
           ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (icon != null) ...[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: icon!,
-              ),
-              const SizedBox(width: 8),
-            ],
+            (icon != null
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: icon,
+                  )
+                : const SizedBox()),
+            (icon != null
+                ? const SizedBox(
+                    width: 8,
+                  )
+                : const SizedBox()),
             Text(
               '$caption',
-              style: AppText.smallTextStyle.copyWith(
-                height: 0,
-                color: isSelected ? Colors.white : Colors.black,
-              ),
+              style: AppText.smallTextStyle ?.copyWith(
+                  height: 0,
+                  color: isSelected ? Colors.grey : Colors.black),
             ),
           ],
         ),
