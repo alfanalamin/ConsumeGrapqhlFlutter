@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/common/button_navbar.dart';
 import 'package:flutter_application_1/theme.dart';
 
 import 'home_page.dart';
@@ -20,7 +21,7 @@ class _ContactsPageState extends State<ContactsPage> {
     if (index == 0) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const HomePage(heightBar: 18,)),
       );
     } else if (index == 1) {
       Navigator.push(
@@ -183,63 +184,9 @@ class _ContactsPageState extends State<ContactsPage> {
             ),
           ],
         ),
-        bottomNavigationBar: Stack(
-          children: [
-            BottomNavigationBar(
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              selectedItemColor: Colors.black,
-              items: const [
-                BottomNavigationBarItem(
-                  //icon di ganti sama gmabar dari assets
-                  icon: ImageIcon(
-                    AssetImage('assets/images/home-2.png'),
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/element-equal.png'),
-                  ),
-                  label: 'Services',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/send-2.png'),
-                  ),
-                  label: 'Contact',
-                ),
-              ],
-            ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 5,
-                    color:
-                        _selectedIndex == 0 ? Colors.black : Colors.transparent,
-                  ),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 5,
-                    color:
-                        _selectedIndex == 1 ? Colors.black : Colors.transparent,
-                  ),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 5,
-                    color:
-                        _selectedIndex == 2 ? Colors.black : Colors.transparent,
-                  ),
-                ],
-              ),
-            ),
-          ],
+        bottomNavigationBar: BottomNavBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
       ),
     );
