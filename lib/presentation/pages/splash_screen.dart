@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) =>  const HomePage(),
+          builder: (context) =>  const HomePage(heightBar: 18,),
         ),
       ),
     );
