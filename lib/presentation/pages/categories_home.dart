@@ -1,33 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/common/button_navbar.dart';
+import 'package:flutter_application_1/presentation/pages/contacts_page.dart';
+import 'package:flutter_application_1/presentation/pages/home_page.dart';
+import 'package:flutter_application_1/presentation/pages/services_page.dart';
 import 'package:flutter_application_1/theme.dart';
 
 class CategoriesHome extends StatefulWidget {
-  // final String imageUrl;
-  // final String title;
-  // final String date;
-  // final String description;
+  final dynamic post;
 
-  // CategoriesHome({
-  //   required this.imageUrl,
-  //   required this.title,
-  //   required this.date,
-  //   required this.description,
-  // });
+  CategoriesHome({Key? key, required this.post}) : super(key: key);
 
-  // ignore: prefer_typing_uninitialized_variables
-  final post;
-
-  CategoriesHome({super.key, required this.post});
   @override
   State<CategoriesHome> createState() => _CategoriesHomeState();
 }
 
 class _CategoriesHomeState extends State<CategoriesHome> {
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                const HomePage(heightBar: 18,)), // Ganti 'Hom' dengan nama kelas yang sesuai untuk halaman beranda Anda
+      );
+    } else if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ServicesPage()),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ContactsPage()),
+      );
+    }
   }
 
   @override
@@ -81,10 +93,6 @@ class _CategoriesHomeState extends State<CategoriesHome> {
                   const SizedBox(height: 10),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
-                    decoration: BoxDecoration(
-                        // color: Colors.white,
-                        // borderRadius: BorderRadius.circular(20),
-                        ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -101,63 +109,9 @@ class _CategoriesHomeState extends State<CategoriesHome> {
             ),
           ),
         ),
-        bottomNavigationBar: Stack(
-          children: [
-            BottomNavigationBar(
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              selectedItemColor: Colors.black,
-              items: const [
-                BottomNavigationBarItem(
-                  //icon di ganti sama gambar dari assets
-                  icon: ImageIcon(
-                    AssetImage('assets/images/home-2.png'),
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/element-equal.png'),
-                  ),
-                  label: 'Services',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/send-2.png'),
-                  ),
-                  label: 'Contact',
-                ),
-              ],
-            ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color:
-                        _selectedIndex == 0 ? Colors.black : Colors.transparent,
-                  ),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color:
-                        _selectedIndex == 1 ? Colors.black : Colors.transparent,
-                  ),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color:
-                        _selectedIndex == 2 ? Colors.black : Colors.transparent,
-                  ),
-                ],
-              ),
-            ),
-          ],
+        bottomNavigationBar: BottomNavBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
       ),
     );
