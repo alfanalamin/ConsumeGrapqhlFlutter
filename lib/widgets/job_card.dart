@@ -9,16 +9,20 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Jobcard extends StatefulWidget {
   final String searchQuery;
+  final String selectedCategoryQuery;
 
-  const Jobcard({Key? key, required this.searchQuery}) : super(key: key);
+  const Jobcard({
+    Key? key,
+    required this.searchQuery,
+    required this.selectedCategoryQuery,
+  }) : super(key: key);
 
   @override
   _JobcardState createState() => _JobcardState();
 }
 
 class _JobcardState extends State<Jobcard> {
-  final RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
+  final RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   @override
   void initState() {
@@ -66,7 +70,13 @@ class _JobcardState extends State<Jobcard> {
                     .toLowerCase()
                     .contains(widget.searchQuery.toLowerCase()))
                 .toList();
-
+        final filteredByCategory = widget.selectedCategoryQuery.isEmpty
+            ? filteredData
+            : filteredData
+                ?.where((element) => element.title!
+                    .toLowerCase()
+                    .contains(widget.selectedCategoryQuery.toLowerCase()))
+                .toList();
         switch (provider.postState) {
           case RequestState.Empty:
             return const Center(
@@ -79,15 +89,15 @@ class _JobcardState extends State<Jobcard> {
           case RequestState.Loaded:
             if (provider.postsData != null) {
               return SizedBox(
-                height: MediaQuery.of(context).size.height - 150,
+                height: MediaQuery.of(context).size.height - 255,
                 child: SmartRefresher(
                   controller: _refreshController,
                   onRefresh: _onRefresh,
                   onLoading: _onLoading,
                   child: ListView.builder(
-                    itemCount: filteredData?.length ?? 0,
+                    itemCount: filteredByCategory?.length,
                     itemBuilder: (context, index) {
-                      final post = filteredData![index];
+                      final post = filteredByCategory![index];
                       return InkWell(
                         onTap: () {
                           Navigator.push(
