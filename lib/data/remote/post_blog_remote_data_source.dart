@@ -17,55 +17,12 @@ class PostBlogRemoteDataSourceImpl implements PostBlogRemoteDataSource {
       QueryOptions(
         document: Options$Query$blogPosts().document,
         fetchPolicy: FetchPolicy.networkOnly,
-      ));
-        checkError(result);
-    return result.data != null
-        ? Query$blogPosts$blogPosts.fromJson(result.data!['blogPosts'])
-        : null;
+      ),
+    );
+      checkError(result);
+      // print(result.data);
+      return result.data != null
+      ? Query$blogPosts$blogPosts.fromJson(result.data!['blogPosts'])
+      : null;
   }
 }
-  
-//   try {
-//     final graphQLClient = GetIt.I<GraphQLClient>();
-
-//     final queryOptions = QueryOptions(
-//       document: Options$Query$blogPosts().document,
-//       fetchPolicy: FetchPolicy.networkOnly,
-//     );
-
-//       final result = await graphQLClient.query(queryOptions);
-//       if (result.hasException) {
-//         // Handle GraphQL query exceptions
-//         throw result.exception!;
-//       }
-//       return _parseBlogPostsResponse(result.data);
-//     } catch (error) {
-//       // Handle general exceptions
-//       // ignore: avoid_print
-//       print('Error: $error');
-//       return null;
-//     }
-//   }
-
-//   Query$blogPosts$blogPosts? _parseBlogPostsResponse(
-//       Map<String, dynamic>? responseData) {
-//     if (responseData != null) {
-//       // Check if the 'blogPosts' key exists and is not null in the responseData
-//       if (responseData['getBlogPosts'] != null) {
-//         // Assuming Query$blogPosts$blogPosts.fromJson is a generated constructor from the query class.
-//         return Query$blogPosts$blogPosts.fromJson(responseData['getBlogPosts']);
-//       } else {
-//         // Handle the case when 'blogPosts' key is null or missing in the response
-//         // ignore: avoid_print
-//         print(
-//             'Error: blogPosts key is missing or null in the GraphQL response.');
-//         return null;
-//       }
-//     } else {
-//       // Handle the case when responseData is null
-//       // ignore: avoid_print
-//       print('Error: GraphQL response data is null.');
-//       return null;
-//     }
-//   }
-// }
