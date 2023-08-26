@@ -4,8 +4,7 @@ class BottomNavBar extends StatefulWidget {
   final int selectedIndex;
   final ValueChanged<int> onItemTapped;
 
-  // ignore: use_key_in_widget_constructors
-  const BottomNavBar({
+  const BottomNavBar({super.key, 
     required this.selectedIndex,
     required this.onItemTapped,
   });
@@ -23,27 +22,26 @@ class _BottomNavBarState extends State<BottomNavBar> {
           currentIndex: widget.selectedIndex,
           onTap: widget.onItemTapped,
           selectedItemColor: Colors.black,
-         items: const [
-                BottomNavigationBarItem(
-                  //icon di ganti sama gmabar dari assets
-                  icon: ImageIcon(
-                    AssetImage('assets/images/home-2.png'),
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/element-equal.png'),
-                  ),
-                  label: 'Services',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/send-2.png'),
-                  ),
-                  label: 'Contact',
-                ),
-              ],
+          items: const [
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/home-2.png'),
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/element-equal.png'),
+              ),
+              label: 'Services',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/send-2.png'),
+              ),
+              label: 'Contact',
+            ),
+          ],
         ),
         Positioned(
           top: 0,
