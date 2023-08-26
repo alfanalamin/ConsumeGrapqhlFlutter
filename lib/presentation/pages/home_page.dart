@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/common/button_navbar.dart';
+import 'package:flutter_application_1/presentation/main/home/category.dart';
 import 'package:flutter_application_1/presentation/pages/services_page.dart';
+import 'package:flutter_application_1/presentation/pages/contacts_page.dart';
 import 'package:flutter_application_1/theme.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../widgets/job_card.dart';
-import 'contacts_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final double heightBar;
+
+  const HomePage({Key? key, required this.heightBar}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -13,25 +18,38 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+
+  int _selectedCategoryIndex = 0;
+  final List<String> _categories = ['', 'Google', 'Campaign', 'Facebook'];
+
+  void _onCategoryTap(int index) {
+    setState(() {
+      _selectedCategoryIndex = index;
+    });
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-    }); 
+    });
 
     if (index == 0) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(
+          builder: (context) => const HomePage(
+            heightBar: 12,
+          ),
+        ),
       );
     } else if (index == 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const ServicesPage()),
       );
     } else if (index == 2) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const ContactsPage()),
       );
@@ -42,6 +60,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -51,114 +70,88 @@ class _HomePageState extends State<HomePage> {
             style: AppText.titleTextStyle,
           ),
         ),
-        body: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: AppColor.neutral500.value,
-                      width: 0.1,
-                    ),
-                  ),
-                  child: TextField(
-                    controller: _searchController,
-                    onChanged: (query) {
-                      setState(() {});
-                    },
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Search articles...',
-                      suffixIcon: _searchController.text.isNotEmpty
-                          ? IconButton(
-                              icon: const Icon(
-                                Icons.close,
-                                color: Colors.black,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _searchController.clear();
-                                });
-                              },
-                            )
-                          : const Icon(
-                              Icons.search,
-                              color: Colors.black,
-                            ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Column(
-                  children: [
-                    Jobcard(searchQuery: _searchController.text),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),  
-        bottomNavigationBar: Stack(
+        body: ListView(
+          controller: ScrollController(keepScrollOffset: true),
+          // Use ListView here
           children: [
-            BottomNavigationBar(
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              selectedItemColor: Colors.black,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/home-2.png'),
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/element-equal.png'),
-                  ),
-                  label: 'Services',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage('assets/images/send-2.png'),
-                  ),
-                  label: 'Contact',
-                ),
-              ],
-            ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
                 children: [
                   Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color:
-                        _selectedIndex == 0 ? Colors.black : Colors.transparent,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: AppColor.neutral500.value,
+                        width: 0.1,
+                      ),
+                    ),
+                    child: TextField(
+                      controller: _searchController,
+                      onChanged: (query) {
+                        setState(() {});
+                      },
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Cari artikel...',
+                        suffixIcon: _searchController.text.isNotEmpty
+                            ? IconButton(
+                                icon: const Icon(
+                                  Icons.close,
+                                  color: Colors.black,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _searchController.clear();
+                                  });
+                                },
+                              )
+                            : const Icon(
+                                Icons.search,
+                                color: Colors.black,
+                              ),
+                      ),
+                    ),
                   ),
+                  const SizedBox(height: 5),
                   Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color:
-                        _selectedIndex == 1 ? Colors.black : Colors.transparent,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: _categories.asMap().entries.map((entry) {
+                          print(entry.key);
+                          int index = entry.key;
+                          String caption = entry.value;
+                          return Category(
+                            caption: caption,
+                            index: index,
+                            icon: index >= 0
+                                ? const Icon(Iconsax.play,
+                                    size: 14, color: Colors.white)
+                                : null,
+                            isSelected: _selectedCategoryIndex == index,
+                            onTap: (key) => {_onCategoryTap(index)},
+                          );
+                        }).toList(),
+                      ),
+                    ),
                   ),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color:
-                        _selectedIndex == 2 ? Colors.black : Colors.transparent,
+                  const SizedBox(height: 12),
+                  Jobcard(
+                    searchQuery: _searchController.text,
+                    selectedCategoryQuery: _categories[_selectedCategoryIndex],
                   ),
                 ],
               ),
             ),
           ],
+        ),
+        bottomNavigationBar: BottomNavBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
       ),
     );
