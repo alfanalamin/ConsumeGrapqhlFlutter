@@ -1,5 +1,5 @@
-query blogPosts {
-  blogPosts(limit: 500) {
+query blogPosts($page: Int, $categoryId: String) {
+  blogPosts(page: $page, categoryId: $categoryId) {
     items {
       id
       title
