@@ -25,16 +25,18 @@ class BlogPostProvider extends ChangeNotifier {
     notifyListeners();
 
     final result = await getPost.execute();
+
     result.fold(
       (failure) {
         _postState = RequestState.Error;
         _postFailure = failure as RequestFailure?;
         notifyListeners();
       },
-      (result) {
+      (data) {
         _postState = RequestState.Loaded;
-        _postsData = result;
+        _postsData = data;
         notifyListeners();
-      });
+      },
+    );
   }
 }
