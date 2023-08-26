@@ -4,6 +4,144 @@ import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 
 
+class Variables$Query$blogPosts {
+  factory Variables$Query$blogPosts({
+    int? page,
+    String? categoryId,
+  }) =>
+      Variables$Query$blogPosts._({
+        if (page != null) r'page': page,
+        if (categoryId != null) r'categoryId': categoryId,
+      });
+
+  Variables$Query$blogPosts._(this._$data);
+
+  factory Variables$Query$blogPosts.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('page')) {
+      final l$page = data['page'];
+      result$data['page'] = (l$page as int?);
+    }
+    if (data.containsKey('categoryId')) {
+      final l$categoryId = data['categoryId'];
+      result$data['categoryId'] = (l$categoryId as String?);
+    }
+    return Variables$Query$blogPosts._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get page => (_$data['page'] as int?);
+  String? get categoryId => (_$data['categoryId'] as String?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('page')) {
+      final l$page = page;
+      result$data['page'] = l$page;
+    }
+    if (_$data.containsKey('categoryId')) {
+      final l$categoryId = categoryId;
+      result$data['categoryId'] = l$categoryId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$blogPosts<Variables$Query$blogPosts> get copyWith =>
+      CopyWith$Variables$Query$blogPosts(
+        this,
+        (i) => i,
+      );
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$blogPosts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$page = page;
+    final lOther$page = other.page;
+    if (_$data.containsKey('page') != other._$data.containsKey('page')) {
+      return false;
+    }
+    if (l$page != lOther$page) {
+      return false;
+    }
+    final l$categoryId = categoryId;
+    final lOther$categoryId = other.categoryId;
+    if (_$data.containsKey('categoryId') !=
+        other._$data.containsKey('categoryId')) {
+      return false;
+    }
+    if (l$categoryId != lOther$categoryId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$page = page;
+    final l$categoryId = categoryId;
+    return Object.hashAll([
+      _$data.containsKey('page') ? l$page : const {},
+      _$data.containsKey('categoryId') ? l$categoryId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$blogPosts<TRes> {
+  factory CopyWith$Variables$Query$blogPosts(
+    Variables$Query$blogPosts instance,
+    TRes Function(Variables$Query$blogPosts) then,
+  ) = _CopyWithImpl$Variables$Query$blogPosts;
+
+  factory CopyWith$Variables$Query$blogPosts.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$blogPosts;
+
+  TRes call({
+    int? page,
+    String? categoryId,
+  });
+}
+
+class _CopyWithImpl$Variables$Query$blogPosts<TRes>
+    implements CopyWith$Variables$Query$blogPosts<TRes> {
+  _CopyWithImpl$Variables$Query$blogPosts(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$blogPosts _instance;
+
+  final TRes Function(Variables$Query$blogPosts) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? page = _undefined,
+    Object? categoryId = _undefined,
+  }) =>
+      _then(Variables$Query$blogPosts._({
+        ..._instance._$data,
+        if (page != _undefined) 'page': (page as int?),
+        if (categoryId != _undefined) 'categoryId': (categoryId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$blogPosts<TRes>
+    implements CopyWith$Variables$Query$blogPosts<TRes> {
+  _CopyWithStubImpl$Variables$Query$blogPosts(this._res);
+
+  TRes _res;
+
+  call({
+    int? page,
+    String? categoryId,
+  }) =>
+      _res;
+}
 
 class Query$blogPosts {
   Query$blogPosts({
@@ -141,7 +279,26 @@ const documentNodeQueryblogPosts = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
     name: NameNode(value: 'blogPosts'),
-    variableDefinitions: [],
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'page')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'categoryId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
@@ -149,9 +306,13 @@ const documentNodeQueryblogPosts = DocumentNode(definitions: [
         alias: null,
         arguments: [
           ArgumentNode(
-            name: NameNode(value: 'limit'),
-            value: IntValueNode(value: '500'),
-          )
+            name: NameNode(value: 'page'),
+            value: VariableNode(name: NameNode(value: 'page')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'categoryId'),
+            value: VariableNode(name: NameNode(value: 'categoryId')),
+          ),
         ],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
@@ -239,6 +400,7 @@ Query$blogPosts _parserFn$Query$blogPosts(Map<String, dynamic> data) =>
 class Options$Query$blogPosts extends graphql.QueryOptions<Query$blogPosts> {
   Options$Query$blogPosts({
     String? operationName,
+    Variables$Query$blogPosts? variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -246,6 +408,7 @@ class Options$Query$blogPosts extends graphql.QueryOptions<Query$blogPosts> {
     Duration? pollInterval,
     graphql.Context? context,
   }) : super(
+          variables: variables?.toJson() ?? {},
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -262,6 +425,7 @@ class WatchOptions$Query$blogPosts
     extends graphql.WatchQueryOptions<Query$blogPosts> {
   WatchOptions$Query$blogPosts({
     String? operationName,
+    Variables$Query$blogPosts? variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -272,6 +436,7 @@ class WatchOptions$Query$blogPosts
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
+          variables: variables?.toJson() ?? {},
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -288,9 +453,12 @@ class WatchOptions$Query$blogPosts
 }
 
 class FetchMoreOptions$Query$blogPosts extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$blogPosts({required graphql.UpdateQuery updateQuery})
-      : super(
+  FetchMoreOptions$Query$blogPosts({
+    required graphql.UpdateQuery updateQuery,
+    Variables$Query$blogPosts? variables,
+  }) : super(
           updateQuery: updateQuery,
+          variables: variables?.toJson() ?? {},
           document: documentNodeQueryblogPosts,
         );
 }
@@ -304,18 +472,26 @@ extension ClientExtension$Query$blogPosts on graphql.GraphQLClient {
       this.watchQuery(options ?? WatchOptions$Query$blogPosts());
   void writeQuery$blogPosts({
     required Query$blogPosts data,
+    Variables$Query$blogPosts? variables,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-            operation: graphql.Operation(document: documentNodeQueryblogPosts)),
+          operation: graphql.Operation(document: documentNodeQueryblogPosts),
+          variables: variables?.toJson() ?? const {},
+        ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$blogPosts? readQuery$blogPosts({bool optimistic = true}) {
+  Query$blogPosts? readQuery$blogPosts({
+    Variables$Query$blogPosts? variables,
+    bool optimistic = true,
+  }) {
     final result = this.readQuery(
       graphql.Request(
-          operation: graphql.Operation(document: documentNodeQueryblogPosts)),
+        operation: graphql.Operation(document: documentNodeQueryblogPosts),
+        variables: variables?.toJson() ?? const {},
+      ),
       optimistic: optimistic,
     );
     return result == null ? null : Query$blogPosts.fromJson(result);
@@ -340,14 +516,11 @@ class Query$blogPosts$Widget extends graphql_flutter.Query<Query$blogPosts> {
           builder: builder,
         );
 }
-
-
-
 class Query$blogPosts$blogPosts {
   Query$blogPosts$blogPosts({
     required this.items,
     this.$__typename = 'BlogPostResSchema',
-});
+  });
 
   factory Query$blogPosts$blogPosts.fromJson(Map<String, dynamic> json) {
     final l$items = json['items'];

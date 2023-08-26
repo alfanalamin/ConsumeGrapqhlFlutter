@@ -8,8 +8,8 @@ import 'package:flutter_application_1/theme.dart';
 class CategoriesHome extends StatefulWidget {
   final dynamic post;
 
-  CategoriesHome({Key? key, required this.post}) : super(key: key);
-
+  const CategoriesHome({Key? key, required this.post}) : super(key: key);
+  
   @override
   State<CategoriesHome> createState() => _CategoriesHomeState();
 }
@@ -26,8 +26,9 @@ class _CategoriesHomeState extends State<CategoriesHome> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                const HomePage(heightBar: 18,)), // Ganti 'Hom' dengan nama kelas yang sesuai untuk halaman beranda Anda
+            builder: (context) => const HomePage(
+                  heightBar: 18,
+                )),
       );
     } else if (index == 1) {
       Navigator.push(
