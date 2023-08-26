@@ -5,6 +5,8 @@ import 'package:flutter_application_1/presentation/pages/home_page.dart';
 import 'package:flutter_application_1/presentation/pages/services_page.dart';
 import 'package:flutter_application_1/theme.dart';
 
+import '../common/slide_transition.dart';
+
 class CategoriesHome extends StatefulWidget {
   final dynamic post;
 
@@ -15,30 +17,25 @@ class CategoriesHome extends StatefulWidget {
 }
 
 class _CategoriesHomeState extends State<CategoriesHome> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
     if (index == 0) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) => const HomePage(
-                  heightBar: 18,
-                )),
+        CustomSlidePageRoute(
+          page: const HomePage(heightBar: 12),
+        ),
       );
     } else if (index == 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ServicesPage()),
+        CustomSlidePageRoute(page: const ServicesPage()),
       );
     } else if (index == 2) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ContactsPage()),
+        CustomSlidePageRoute(page: const ContactsPage()),
       );
     }
   }

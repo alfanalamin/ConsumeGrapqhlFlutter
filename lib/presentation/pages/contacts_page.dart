@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/common/button_navbar.dart';
 import 'package:flutter_application_1/theme.dart';
 
+import '../common/slide_transition.dart';
 import 'home_page.dart';
 import 'services_page.dart';
 
@@ -21,17 +22,19 @@ class _ContactsPageState extends State<ContactsPage> {
     if (index == 0) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage(heightBar: 18,)),
+        CustomSlidePageRoute(
+          page: const HomePage(heightBar: 12),
+        ),
       );
     } else if (index == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ServicesPage()),
+        CustomSlidePageRoute(page: const ServicesPage()),
       );
     } else if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ContactsPage()),
+        CustomSlidePageRoute(page: const ContactsPage()),
       );
     }
   }

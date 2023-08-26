@@ -4,6 +4,7 @@ import 'package:flutter_application_1/presentation/pages/home_page.dart';
 import 'package:flutter_application_1/theme.dart';
 
 
+import '../common/slide_transition.dart';
 import 'contacts_page.dart';
 
 class ServicesPage extends StatefulWidget {
@@ -22,20 +23,23 @@ class _ServicesPageState extends State<ServicesPage> {
        if (index == 0) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage(heightBar: 18,)),
+        CustomSlidePageRoute(
+          page: const HomePage(heightBar: 12),
+        ),
       );
     } else if (index == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ServicesPage()),
+        CustomSlidePageRoute(page: const ServicesPage()),
       );
     } else if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ContactsPage()),
+        CustomSlidePageRoute(page: const ContactsPage()),
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

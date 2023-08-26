@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/common/button_navbar.dart';
+import 'package:flutter_application_1/presentation/common/slide_transition.dart';
 import 'package:flutter_application_1/presentation/main/home/category.dart';
 import 'package:flutter_application_1/presentation/pages/services_page.dart';
 import 'package:flutter_application_1/presentation/pages/contacts_page.dart';
@@ -30,28 +31,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
     if (index == 0) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(
-            heightBar: 12,
-          ),
+        CustomSlidePageRoute(
+          page: const HomePage(heightBar: 12),
         ),
       );
     } else if (index == 1) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ServicesPage()),
+        CustomSlidePageRoute (page: const ServicesPage()),
       );
     } else if (index == 2) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ContactsPage()),
+        CustomSlidePageRoute (page: const ContactsPage()),
       );
     }
   }
