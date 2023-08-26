@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'home_page.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -13,14 +12,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-    void initState() {
+  void initState() {
     super.initState();
     Timer(
       const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) =>  const HomePage(heightBar: 18,),
+          builder: (context) => const HomePage(
+            heightBar: 18,
+          ),
         ),
       ),
     );
@@ -28,9 +29,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Text(  
+        child: Text(
           'DIGIMAYA',
           style: TextStyle(
             fontSize: 32,
